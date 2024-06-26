@@ -2,7 +2,7 @@
 
 namespace SportsFacilityManagementAPI.Repository
 {
-    public interface IEspacioDeportivoRepository
+    public interface IEspacioDeportivoRepository  // Interfaz para los metodos de Espacio Deportivo
     {
         Task<IEnumerable<EspacioDeportivo>> GetAllFacilitiesAsync();
         Task<EspacioDeportivo> GetFacilityByIdAsync(int id);

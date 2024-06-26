@@ -3,6 +3,8 @@ using SportsFacilityManagementAPI.Data;
 using SportsFacilityManagementAPI.Repository;
 using SportsFacilityManagementAPI.Service;
 
+
+// CONFIGURACION INICIAL PARA LOS COMPONENTES SWAGGER Y LOS SERVICIOS Y CONTROLLER 
 var builder = WebApplication.CreateBuilder(args);
 
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SportsFacilityManagementAPI.Model;
 namespace SportsFacilityManagementAPI.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext  // En esta clase se realiza toda la conexion con la base de datos
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<EspacioDeportivo> EspacioDeportivo { get; set; }

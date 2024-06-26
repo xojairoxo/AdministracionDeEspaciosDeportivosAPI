@@ -4,7 +4,7 @@ using SportsFacilityManagementAPI.Model;
 
 namespace SportsFacilityManagementAPI.Repository
 {
-    public class EspacioDeportivoRepository : IEspacioDeportivoRepository
+    public class EspacioDeportivoRepository : IEspacioDeportivoRepository // Repositorio de Espacio Deportivo
     {
         private readonly ApplicationDbContext _context;
         public EspacioDeportivoRepository(ApplicationDbContext context)
