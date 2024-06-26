@@ -1,7 +1,8 @@
 ﻿using SportsFacilityManagementAPI.Model;
-namespace SportsFacilityManagementAPI.Repository
+
+namespace SportsFacilityManagementAPI.Service
 {
-    public interface IReservaRepository
+    public interface IReservacionService
     {
         Task<IEnumerable<Reserva>> GetReservationsByFacilityIdAsync(int facilityId);
         Task<Reserva> GetReservationByIdAsync(int id);
@@ -10,5 +11,4 @@ namespace SportsFacilityManagementAPI.Repository
         Task DeleteReservationAsync(DateTime date);
         public Task<IEnumerable<Reserva>> GetAllReservationsAsync();
     }
-
 }

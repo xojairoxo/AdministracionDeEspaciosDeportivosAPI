@@ -14,6 +14,12 @@ namespace SportsFacilityManagementAPI.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<EspacioDeportivo>().HasKey(e => e.EspaciosDeportivosId);
             modelBuilder.Entity<EspacioDeportivo>().ToTable("EspaciosDeportivos");
+            modelBuilder.Entity<Reserva>().HasKey(e => e.ReservaId);
+            modelBuilder.Entity<Reserva>().ToTable("Reserva");
+            modelBuilder.Entity<Reserva>()
+                .HasOne<EspacioDeportivo>()
+                .WithMany()
+                .HasForeignKey(r => r.EspaciosDeportivosId);
         }
 
     }

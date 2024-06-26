@@ -3,13 +3,10 @@ namespace SportsFacilityManagementAPI.Model
 {
     public class Reserva
     {
-        public int Id { get; set; }
-        public int EspacioDeportivoId { get; set; }
-        public DateTime Date { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
-
-        public EspacioDeportivo espacioDeportivo { get; set; }
-
+        public int ReservaId { get; set; }
+        public int EspaciosDeportivosId { get; set; }
+        public DateTime DiaReservacion { get; set; }
+        public TimeSpan HoraInicio { get; set; }
+        public TimeSpan HoraFinal { get; set; }
     }
 }

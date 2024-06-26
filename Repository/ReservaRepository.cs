@@ -1,4 +1,5 @@
-﻿using SportsFacilityManagementAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SportsFacilityManagementAPI.Data;
 using SportsFacilityManagementAPI.Model;
 
 namespace SportsFacilityManagementAPI.Repository
@@ -11,29 +12,44 @@ namespace SportsFacilityManagementAPI.Repository
             _context = context;
         }
 
-        public Task AddReservationAsync(Reserva reservation)
+        public async Task AddReservationAsync(Reserva reservation)
         {
-            throw new NotImplementedException();
+            await _context.Reservaciones.AddAsync(reservation);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteReservationAsync(int id)
+        public async Task DeleteReservationAsync(DateTime date)
         {
-            throw new NotImplementedException();
+            var reservation = await _context.Reservaciones
+           .FirstOrDefaultAsync(r => r.DiaReservacion == date);
+            if (reservation != null)
+            {
+                _context.Reservaciones.Remove(reservation);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public Task<Reserva> GetReservationByIdAsync(int id)
+        public async Task<Reserva> GetReservationByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Reservaciones.FindAsync(id);
         }
 
-        public Task<IEnumerable<Reserva>> GetReservationsByFacilityIdAsync(int facilityId)
+        public async Task<IEnumerable<Reserva>> GetReservationsByFacilityIdAsync(int facilityId)
         {
-            throw new NotImplementedException();
+            return await _context.Reservaciones
+               .Where(r => r.EspaciosDeportivosId == facilityId)
+               .ToListAsync();
         }
 
-        public Task UpdateReservationAsync(Reserva reservation)
+        public async Task<IEnumerable<Reserva>> GetAllReservationsAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Reservaciones.ToListAsync();
+        }
+
+        public async Task UpdateReservationAsync(Reserva reservation)
+        {
+            _context.Entry(reservation).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }

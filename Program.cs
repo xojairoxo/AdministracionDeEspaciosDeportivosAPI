@@ -16,13 +16,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
     new MySqlServerVersion(new Version(8, 0, 21))));
 
-//builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 
-//builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IEspacioDeportivoRepository, EspacioDeportivoRepository>();
 builder.Services.AddScoped<IEspacioDeportivoService, EspacioDeportivoService>();
 
+builder.Services.AddScoped<IReservaRepository, ReservaRepository>();
 
+builder.Services.AddScoped<IReservacionService, ReservacionService>();
 builder.Services.AddControllers();
 
 var app = builder.Build();

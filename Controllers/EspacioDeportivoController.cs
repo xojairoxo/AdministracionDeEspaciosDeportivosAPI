@@ -15,17 +15,17 @@ namespace SportsFacilityManagementAPI.Controllers
             _service  = service;
         }
 
-        [HttpGet(Name = "GetAllEspaciosDeportivos")]
+        [HttpGet("/GetAllEspaciosDeportivos")]
         public async Task<IActionResult> GetAllEspaciosDeportivos() => Ok(await _service.GetAllFacilitiesAsync());
 
-        [HttpPost(Name = "AddEspacioDeportivo")]
+        [HttpPost("/AddEspacioDeportivo")]
         public async Task<IActionResult> AddFacility(EspacioDeportivo facility)
         {
             await _service.AddFacilityAsync(facility);
             return CreatedAtAction(nameof(GetAllEspaciosDeportivos), new { id = facility.EspaciosDeportivosId }, facility);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("/updateEspacioDeportivoById/{id}")]
         public async Task<IActionResult> UpdateFacility(int id, EspacioDeportivo facility)
         {
             if (id != facility.EspaciosDeportivosId)
@@ -35,7 +35,7 @@ namespace SportsFacilityManagementAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("/deleteEspacioDeportivoById/{id}")]
         public async Task<IActionResult> DeleteFacility(int id)
         {
             await _service.DeleteFacilityAsync(id);
